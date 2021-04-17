@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class StackMaster : MonoBehaviour
 {
     public Text counterText;
+    public Text indexText;
     public int counter = 0;
+    public int index;
 
     // Start is called before the first frame update
     void Start()
@@ -18,5 +20,6 @@ public class StackMaster : MonoBehaviour
     void Update()
     {
         counterText.text = counter.ToString();
+        indexText.text = "[" + index.ToString() + "]";
     }
 }

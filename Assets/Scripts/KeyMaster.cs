@@ -22,7 +22,6 @@ public class KeyMaster : MonoBehaviour
         playerInput.Select();
         string parse = delSet(text, "+-[]<>.,");
         playerInput.text = parse;
-        Debug.Log(parse);
     }
     
     private string delSet(string str, string set)
@@ -35,5 +34,12 @@ public class KeyMaster : MonoBehaviour
             res += m.Value;
         }
         return (res);
+    }
+
+    public void endInput()
+    {
+        Debug.Log(playerInput.text);
+        playerInput.text = "";
+        playerInput.Select();
     }
 }
