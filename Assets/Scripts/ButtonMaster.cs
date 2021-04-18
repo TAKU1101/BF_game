@@ -13,9 +13,6 @@ public class ButtonMaster : MonoBehaviour
     {
         skipFlag = false;
         resetFlag = false;
-        Debug.Log(avator.transform.position.x);
-        Debug.Log(avator.transform.position.y);
-        Debug.Log(avator.transform.position.z);
     }
 
     // Update is called once per frame
@@ -33,16 +30,15 @@ public class ButtonMaster : MonoBehaviour
     public void SkipButton()
     {
         skipFlag = true;
-        Debug.Log("skip");
     }
 
     private void ResetGameBoard()
     {
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < 24; i++)
         {
+            StackData.stack[i] = StackData.initStack[i];
             if (StackData.stackObjs[i] != null)
-                StackData.stackObjs[i].GetComponent<StackMaster>().counter = 0;
-            StackData.stack[i] = 0;
+                StackData.stackObjs[i].GetComponent<StackMaster>().counter = StackData.stack[i];
         }
         if (avator.transform.localScale.x < 0)
             avator.transform.localScale = new Vector3(avator.transform.localScale.x * -1, avator.transform.localScale.y, avator.transform.localScale.z);
@@ -55,6 +51,5 @@ public class ButtonMaster : MonoBehaviour
         skipFlag = true;
         resetFlag = true;
         ResetGameBoard();
-        Debug.Log("Reset");
     }
 }

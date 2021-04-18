@@ -10,12 +10,13 @@ public class InitStack : MonoBehaviour
     void Awake()
     {
         int[] stack = StackData.stack;
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < 24; i++)
         {
             GameObject g = Instantiate(stackPrefab, stacksObj.transform);
             g.transform.position = new Vector3(i * 40f - 450f + 480f, 0f + 265.5f, 0f);
             g.GetComponent<StackMaster>().index = i;
-            stack[i] = 0;
+            stack[i] = StackData.initStack[i];
+            g.GetComponent<StackMaster>().counter = stack[i];
             StackData.stackObjs[i] = g;
         }
     }

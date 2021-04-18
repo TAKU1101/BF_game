@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -43,7 +44,6 @@ public class KeyMaster : MonoBehaviour
 
     public void endInput()
     {
-        Debug.Log(playerInput.text);
         button.GetComponent<ButtonMaster>().ResetFlags();
         outputText.text = "";
         bfi(playerInput.text);
@@ -54,11 +54,11 @@ public class KeyMaster : MonoBehaviour
 
     private void ResetGameBoard()
     {
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < 24; i++)
         {
+            StackData.stack[i] = StackData.initStack[i];
             if (StackData.stackObjs[i] != null)
-                StackData.stackObjs[i].GetComponent<StackMaster>().counter = 0;
-            StackData.stack[i] = 0;
+                StackData.stackObjs[i].GetComponent<StackMaster>().counter = StackData.stack[i];
         }
         if (avator.transform.localScale.x < 0)
             avator.transform.localScale = new Vector3(avator.transform.localScale.x * -1, avator.transform.localScale.y, avator.transform.localScale.z);
@@ -68,7 +68,7 @@ public class KeyMaster : MonoBehaviour
 
     private void updateStack()
     {
-        for (int i = 0; i < 500; i++)
+        for (int i = 0; i < 24; i++)
         {
             if (StackData.stackObjs[i] != null)
                 StackData.stackObjs[i].GetComponent<StackMaster>().counter = StackData.stack[i];
@@ -151,6 +151,11 @@ public class KeyMaster : MonoBehaviour
         }
         if (button.GetComponent<ButtonMaster>().resetFlag == true)
             ResetGameBoard();
+    }
+
+    private void isCrear()
+    {
+
     }
 
     private async void adressIncAnimation()
