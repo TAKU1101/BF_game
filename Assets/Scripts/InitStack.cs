@@ -6,9 +6,16 @@ public class InitStack : MonoBehaviour
 {
     public GameObject stackPrefab;
     public GameObject stacksObj;
+    public int stage;
 
     void Awake()
     {
+        switch (stage)
+        {
+            case 1:
+                StackData.initStack = new int[] {4, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
+        }
         int[] stack = StackData.stack;
         for (int i = 0; i < 24; i++)
         {

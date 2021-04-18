@@ -126,12 +126,18 @@ public class KeyMaster : MonoBehaviour
                     StackData.stack[StackData.adress] -= 1;
                     break;
                 case '>':
-                    StackData.adress += 1;
-                    adressIncAnimation();
+                    if (StackData.adress < 23)
+                    {
+                        StackData.adress += 1;
+                        adressIncAnimation();
+                    }
                     break;
                 case '<':
-                    StackData.adress -= 1;
-                    adressDecAnimation();
+                    if (StackData.adress > 0)
+                    {
+                        StackData.adress -= 1;
+                        adressDecAnimation();
+                    }
                     break;
                 case '.':
                     outputText.text += (char)StackData.stack[StackData.adress];
@@ -151,11 +157,19 @@ public class KeyMaster : MonoBehaviour
         }
         if (button.GetComponent<ButtonMaster>().resetFlag == true)
             ResetGameBoard();
+        isCrear();
     }
 
     private void isCrear()
     {
-
+        switch (button.GetComponent<InitStack>().stage)
+        {
+            case 1:
+                Debug.Log(StackData.stack[0]);
+                if (StackData.stack[0] == 6)
+                    SceneManager.LoadScene("Result");
+                break;
+        }
     }
 
     private async void adressIncAnimation()
