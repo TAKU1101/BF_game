@@ -5,5 +5,6 @@ using UnityEngine;
 
 public static class StackData
 {
-    public static int[] stack = new int[100];
+    public static int[] stack = new int[500];
+    public static int adress = 0;
 }
