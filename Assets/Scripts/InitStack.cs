@@ -16,6 +16,7 @@ public class InitStack : MonoBehaviour
             g.transform.position = new Vector3(i * 40f - 450f + 480f, 0f + 265.5f, 0f);
             g.GetComponent<StackMaster>().index = i;
             stack[i] = 0;
+            StackData.stackObjs[i] = g;
         }
     }
 

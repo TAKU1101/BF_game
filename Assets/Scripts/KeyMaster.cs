@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Threading;
 
 public class KeyMaster : MonoBehaviour
 {
     public InputField playerInput;
     public Text outputText;
+    public GameObject avator;
+    public GameObject button;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +44,21 @@ public class KeyMaster : MonoBehaviour
     public void endInput()
     {
         Debug.Log(playerInput.text);
+        button.GetComponent<ButtonMaster>().ResetFlags();
         outputText.text = "";
         bfi(playerInput.text);
+        updateStack();
         playerInput.text = "";
         playerInput.Select();
+    }
+
+    private void updateStack()
+    {
+        for (int i = 0; i < 500; i++)
+        {
+            if (StackData.stack != null)
+                StackData.stackObjs[i].GetComponent<StackMaster>().counter = StackData.stack[i];
+        }
     }
 
     private int loopStart(string code, int codeI)
@@ -84,7 +99,7 @@ public class KeyMaster : MonoBehaviour
         return (codeI);
     }
 
-    private void bfi(string code)
+    private async void bfi(string code)
     {
         for (int codeI = 0; codeI < code.Length; codeI++)
         {
@@ -98,12 +113,13 @@ public class KeyMaster : MonoBehaviour
                     break;
                 case '>':
                     StackData.adress += 1;
+                    adressIncAnimation();
                     break;
                 case '<':
                     StackData.adress -= 1;
+                    adressDecAnimation();
                     break;
                 case '.':
-                    // Debug.Log((char)StackData.stack[StackData.adress]);
                     outputText.text += (char)StackData.stack[StackData.adress];
                     break;
                 case '[':
@@ -115,6 +131,33 @@ public class KeyMaster : MonoBehaviour
                         codeI = loopEnd(code, codeI);
                     break;
             }
+            if (button.GetComponent<ButtonMaster>().skipFlag == false)
+                await Task.Delay(250);
+            updateStack();
+        }
+    }
+
+    private async void adressIncAnimation()
+    {
+        if (avator.transform.localScale.x < 0)
+            avator.transform.localScale = new Vector3(avator.transform.localScale.x * -1, avator.transform.localScale.y, avator.transform.localScale.z);
+        for (float i = 1; i <= 100; i++)
+        {
+            avator.transform.position = new Vector3(avator.transform.position.x + 0.0075f, avator.transform.position.y, avator.transform.position.z);
+            if (button.GetComponent<ButtonMaster>().skipFlag == false)
+                await Task.Delay(1);
+        }
+    }
+
+    private async void adressDecAnimation()
+    {
+        if (avator.transform.localScale.x > 0)
+            avator.transform.localScale = new Vector3(avator.transform.localScale.x * -1, avator.transform.localScale.y, avator.transform.localScale.z);
+        for (float i = 1; i <= 100; i++)
+        {
+            avator.transform.position = new Vector3(avator.transform.position.x - 0.0075f, avator.transform.position.y, avator.transform.position.z);
+            if (button.GetComponent<ButtonMaster>().skipFlag == false)
+                await Task.Delay(1);
         }
     }
 }
