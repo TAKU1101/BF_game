@@ -52,11 +52,25 @@ public class KeyMaster : MonoBehaviour
         playerInput.Select();
     }
 
+    private void ResetGameBoard()
+    {
+        for (int i = 0; i < 500; i++)
+        {
+            if (StackData.stackObjs[i] != null)
+                StackData.stackObjs[i].GetComponent<StackMaster>().counter = 0;
+            StackData.stack[i] = 0;
+        }
+        if (avator.transform.localScale.x < 0)
+            avator.transform.localScale = new Vector3(avator.transform.localScale.x * -1, avator.transform.localScale.y, avator.transform.localScale.z);
+        avator.transform.position = new Vector3(-8.6f, 0.8f, 0f);
+        StackData.adress = 0;
+    }
+
     private void updateStack()
     {
         for (int i = 0; i < 500; i++)
         {
-            if (StackData.stack != null)
+            if (StackData.stackObjs[i] != null)
                 StackData.stackObjs[i].GetComponent<StackMaster>().counter = StackData.stack[i];
         }
     }
@@ -135,6 +149,8 @@ public class KeyMaster : MonoBehaviour
                 await Task.Delay(250);
             updateStack();
         }
+        if (button.GetComponent<ButtonMaster>().resetFlag == true)
+            ResetGameBoard();
     }
 
     private async void adressIncAnimation()
