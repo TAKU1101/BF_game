@@ -46,7 +46,6 @@ public class KeyMaster : MonoBehaviour
     public void endInput()
     {
         button.GetComponent<ButtonMaster>().ResetFlags();
-        outputText.text = "";
         bfi(playerInput.text);
         updateStack();
         StackData.codeLen += playerInput.text.Length;
@@ -168,13 +167,39 @@ public class KeyMaster : MonoBehaviour
         switch (button.GetComponent<InitStack>().stage)
         {
             case 1:
-                Debug.Log(StackData.stack[0]);
-                if (StackData.stack[0] == 6)
+                if (StackData.stack[0] == 42 && StackData.codeLen < 42)
                     SceneManager.LoadScene("Result");
                 break;
             case 2:
-                Debug.Log(StackData.stack[0]);
-                if (StackData.stack[0] == 42 && StackData.codeLen < 42)
+                if (string.Compare("Hi!", outputText.text) == 0)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 3:
+                if (string.Compare("Hello!", outputText.text) == 0 && StackData.codeLen <= 5)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 4:
+                if (StackData.stack[0] == 0 && StackData.codeLen < 42)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 5:
+                if (StackData.stack[0] == 0 && StackData.stack[1] == 42 && StackData.codeLen < 42)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 6:
+                if (StackData.stack[0] == 99 && StackData.codeLen < 42)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 7:
+                if (StackData.stack[1] == 10 && StackData.stack[2] == 20 && StackData.stack[3] == 30 && StackData.stack[4] == 40 && StackData.stack[5] == 50 && StackData.codeLen < 42)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 8:
+                if (StackData.stack[0] == 42 && StackData.stack[1] == 42 && StackData.codeLen < 42)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 9:
+                if (StackData.stack[2] == 420 && StackData.codeLen < 42)
                     SceneManager.LoadScene("Result");
                 break;
         }

@@ -651,7 +651,7 @@ MonoBehaviour:
   stackPrefab: {fileID: 5537938429373116936, guid: e36b07289450f444da708982d7ec33f2,
     type: 3}
   stacksObj: {fileID: 1173897473}
-  stage: 2
+  stage: 1
 --- !u!4 &555917658
 Transform:
   m_ObjectHideFlags: 0
@@ -1288,7 +1288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 900, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271377551

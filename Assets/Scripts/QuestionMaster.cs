@@ -38,7 +38,7 @@ public class QuestionMaster : MonoBehaviour
                 qText.text = "42文字未満でメモリ0の最終的な値を変えずにメモリ0の値をメモリ1にコピーしよう";
                 break;
             case 9:
-                qText.text = "42文字未満でメモリ0とメモリ1の積をメモリ2に入れよう";
+                qText.text = "420文字未満でメモリ0とメモリ1の積をメモリ2に入れよう";
                 break;
         }
     }
