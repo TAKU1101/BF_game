@@ -66,4 +66,14 @@ public class StageSelectMaster : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial01");
     }
+
+    public void TitleClick()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    public void CreditClick()
+    {
+        SceneManager.LoadScene("Credit");
+    }
 }
