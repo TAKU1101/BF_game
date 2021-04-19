@@ -42,6 +42,21 @@ public class InitStack : MonoBehaviour
             case -1:
                 StackData.initStack = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
                 break;
+            case -2:
+                StackData.initStack = new int[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
+            case -3:
+                StackData.initStack = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
+            case -4:
+                StackData.initStack = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
+            case -5:
+                StackData.initStack = new int[] { 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
+            case -6:
+                StackData.initStack = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
         }
         int[] stack = StackData.stack;
         for (int i = 0; i < 24; i++)
@@ -53,6 +68,8 @@ public class InitStack : MonoBehaviour
             g.GetComponent<StackMaster>().counter = stack[i];
             StackData.stackObjs[i] = g;
         }
+        StackData.adress = 0;
+        StackData.codeLen = 0;
     }
 
     // Start is called before the first frame update

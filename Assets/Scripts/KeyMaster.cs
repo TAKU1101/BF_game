@@ -206,7 +206,27 @@ public class KeyMaster : MonoBehaviour
                 break;
             case -1:
                 if (StackData.stack[0] == 1)
-                    SceneManager.LoadScene("Result");
+                    SceneManager.LoadScene("Tutorial02");
+                break;
+            case -2:
+                if (StackData.stack[0] == 0)
+                    SceneManager.LoadScene("Tutorial03");
+                break;
+            case -3:
+                if (StackData.stack[0] == 2 && StackData.stack[1] == 2 && StackData.stack[2] == 1)
+                    SceneManager.LoadScene("Tutorial04");
+                break;
+            case -4:
+                if (StackData.stack[0] == 9)
+                    SceneManager.LoadScene("Tutorial05");
+                break;
+            case -5:
+                if (string.Compare("A", outputText.text) == 0)
+                    SceneManager.LoadScene("Tutorial06");
+                break;
+            case -6:
+                if (StackData.stack[5] == 1)
+                    SceneManager.LoadScene("Title");
                 break;
         }
     }
