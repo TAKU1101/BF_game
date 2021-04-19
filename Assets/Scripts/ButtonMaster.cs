@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonMaster : MonoBehaviour
 {
     public bool skipFlag;
     public bool resetFlag;
     public GameObject avator;
+    public Text codeLen;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,10 @@ public class ButtonMaster : MonoBehaviour
 
     public void ResetButton()
     {
+        StackData.codeLen = 0;
+        Debug.Log(codeLen);
+        if (codeLen != null)
+            codeLen.text = "codeLen: 0";
         skipFlag = true;
         resetFlag = true;
         ResetGameBoard();

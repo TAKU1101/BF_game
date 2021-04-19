@@ -14,6 +14,7 @@ public class KeyMaster : MonoBehaviour
     public Text outputText;
     public GameObject avator;
     public GameObject button;
+    public Text codeLen;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,8 @@ public class KeyMaster : MonoBehaviour
         outputText.text = "";
         bfi(playerInput.text);
         updateStack();
+        StackData.codeLen += playerInput.text.Length;
+        codeLen.text = "codeLen: " + StackData.codeLen.ToString();
         playerInput.text = "";
         playerInput.Select();
     }
@@ -167,6 +170,11 @@ public class KeyMaster : MonoBehaviour
             case 1:
                 Debug.Log(StackData.stack[0]);
                 if (StackData.stack[0] == 6)
+                    SceneManager.LoadScene("Result");
+                break;
+            case 2:
+                Debug.Log(StackData.stack[0]);
+                if (StackData.stack[0] == 42 && StackData.codeLen < 42)
                     SceneManager.LoadScene("Result");
                 break;
         }

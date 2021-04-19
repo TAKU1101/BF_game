@@ -10,4 +10,5 @@ public static class StackData
     public static int[] initStack;
     public static GameObject[] stackObjs = new GameObject[24];
     public static int adress = 0;
+    public static int codeLen = 0;
 }
