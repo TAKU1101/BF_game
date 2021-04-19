@@ -45,6 +45,8 @@ public class KeyMaster : MonoBehaviour
 
     public void endInput()
     {
+        if (button == null)
+            return;
         button.GetComponent<ButtonMaster>().ResetFlags();
         bfi(playerInput.text);
         updateStack();
@@ -200,6 +202,10 @@ public class KeyMaster : MonoBehaviour
                 break;
             case 9:
                 if (StackData.stack[2] == 420 && StackData.codeLen < 42)
+                    SceneManager.LoadScene("Result");
+                break;
+            case -1:
+                if (StackData.stack[0] == 1)
                     SceneManager.LoadScene("Result");
                 break;
         }

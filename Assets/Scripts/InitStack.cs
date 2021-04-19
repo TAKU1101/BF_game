@@ -39,6 +39,9 @@ public class InitStack : MonoBehaviour
             case 9:
                 StackData.initStack = new int[] { 42, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
                 break;
+            case -1:
+                StackData.initStack = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                break;
         }
         int[] stack = StackData.stack;
         for (int i = 0; i < 24; i++)

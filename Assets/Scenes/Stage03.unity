@@ -651,7 +651,7 @@ MonoBehaviour:
   stackPrefab: {fileID: 5537938429373116936, guid: e36b07289450f444da708982d7ec33f2,
     type: 3}
   stacksObj: {fileID: 1173897473}
-  stage: 1
+  stage: 3
 --- !u!4 &555917658
 Transform:
   m_ObjectHideFlags: 0

@@ -40,6 +40,9 @@ public class QuestionMaster : MonoBehaviour
             case 9:
                 qText.text = "420文字未満でメモリ0とメモリ1の積をメモリ2に入れよう";
                 break;
+            case -1:
+                qText.text = "BrainHackへようこそ\nあなたのコードによって猫が動くようになります。\n試しに「+」を入力してみましょう";
+                break;
         }
     }
 
